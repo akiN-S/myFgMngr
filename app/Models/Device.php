@@ -5,12 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DeviceInfo extends Model
+class Device extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'mac',
         'ip',
-        'devName',
+        'mac',
+        'reserved',
+        'description',
+        'hostname',
+        'isLease',
+        'isConfig',
     ]; 
+    
+    
+
 }

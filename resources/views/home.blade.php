@@ -1,8 +1,5 @@
 @include('layouts.app')
 
-@section('content')
-
-
 
 <div class="content">
     <form method="POST" action="{{ 'aaa' }}">
@@ -14,21 +11,35 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Check</th>
-                    <th scope="col">Date and Time</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Currency</th>
-                    <th scope="col">Method</th>
-                    <th scope="col">Statement</th>
-                    <th scope="col">Place</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Location</th>
+                    <th scope="col">IP</th>
+                    <th scope="col">MAC</th>
+                    <th scope="col">Hostname</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">isLeased</th>
+                    <th scope="col">isConfig</th>
                 </tr>
             </thead>
+            @foreach ($devices as $device)
+                <tbody>
+                    <tr>
+                        <td>{{ $device->ip }}</td>
+                        <td>{{ $device->mac }}</td>
+                        <td>{{ $device->hostname }}</td>
+                        <td>{{ $device->description }}</td>
+                        @if ($device->isLease == true)
+                            <td>True</td>
+                        @else
+                            <td>False</td>
+                        @endif
 
-            {{ $devicesInfo }}
-            
+                        @if ($device->isConfig == true)
+                            <td>True</td>
+                        @else
+                            <td>False</td>
+                        @endif
+                    </tr>
+                </tbody>
+            @endforeach
         </table>
     </form>
 </div>
-@endsection
